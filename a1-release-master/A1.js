@@ -83,17 +83,17 @@ function checkKeyboard() {
   if (keyboard.pressed("space"))
     console.log("spacebar pressed")
   if (keyboard.pressed("W"))
-    armadilloFrame.translateZ(.1)
+    armadilloFrame.position.z += .1
   if (keyboard.pressed("A"))
-    armadilloFrame.translateX(.1)
+    armadilloFrame.position.x += .1
   if (keyboard.pressed("S"))
-    armadilloFrame.translateZ(-.1)
+    armadilloFrame.position.z -= .1
   if (keyboard.pressed("D"))
-    armadilloFrame.translateX(-.1)
+    armadilloFrame.position.x -= .1
   if (keyboard.pressed("Q"))
-    armadilloFrame.rotateY(.1)
-  if (keyboard.pressed("E"))
     armadilloFrame.rotateY(-.1)
+  if (keyboard.pressed("E"))
+    armadilloFrame.rotateY(.1)
 
   // The following tells three.js that some uniforms might have changed
   armadilloMaterial.needsUpdate = true;

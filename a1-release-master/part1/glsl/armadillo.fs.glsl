@@ -9,9 +9,10 @@ float minDistance = 2.0;
 void main() {
  	// HINT: For part C, set the color of the armadillo based on the vcolor
 	// HINT: For part D, only color it green within the proximity
-	// gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+	// Set the colour from vertex shader
 	vec3 col = vec3(vcolor);
-	if (orbDistance < 2.0)
+	// Set RB values to 0 if within minDistance
+	if (orbDistance < minDistance)
 		col.xz = vec2(0.0);
 	gl_FragColor = vec4(col, 1.0); 
 }

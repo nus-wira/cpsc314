@@ -11,16 +11,25 @@ void main() {
     // Q1C:
     // HINT: GLSL PROVIDES THE DOT() FUNCTION 
   	// HINT: SHADING IS CALCULATED BY TAKING THE DOT PRODUCT OF THE NORMAL AND LIGHT DIRECTION VECTORS
-    // vcolor = 0.5; // REPLACE ME
+    // Model position in world frame
     vec3 wPosition = vec3(modelMatrix * vec4(position, 1.0));
-    vec3 wNormal = vec3(modelMatrix * vec4(normal, 0.0));
+    // Light direction vector
     vec3 dir = orbPosition - wPosition;
-    vcolor = dot(wNormal, dir) / (length(dir) * length(wNormal));
+
+    // Normal way
+    // Find light vector in model frame
+    vec3 mDir = vec3(inverse(modelMatrix) * vec4(dir, 1.0));
+    // Compute shading using normal and light vector
+    vcolor = dot(normal, mDir) / (length(mDir) * length(normal));
+
+    // Another way?
+    // Find normal vector in world frame
+    // vec3 wNormal = vec3(modelMatrix * vec4(normal, 0.0));
+    // vcolor = dot(wNormal, dir) / (length(dir) * length(wNormal));
 
     // Q1D:
     // HINT: Compute distance in World coordinate to make the magnitude easier to interpret
     // HINT: GLSL has a build-in distance() function
-    // orbDistance = 1.0;// REPLACE ME
     orbDistance = distance(wPosition, orbPosition);
 
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);

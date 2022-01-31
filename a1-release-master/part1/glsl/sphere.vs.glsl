@@ -1,6 +1,6 @@
 // The uniform variable is set up in the javascript code and the same for all vertices
 uniform vec3 orbPosition;
-varying vec3 vNormal;
+out vec3 vNormal;
 
 void main() {
 

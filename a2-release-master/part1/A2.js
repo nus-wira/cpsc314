@@ -80,7 +80,7 @@ loadAndPlaceOBJ('obj/armadillo.obj', armadilloMaterial, armadilloFrame, function
 });
 
 // https://threejs.org/docs/#api/en/geometries/SphereGeometry
-const sphereGeometry = new THREE.SphereGeometry(1.0, 32.0, 32.0);
+const sphereGeometry = new THREE.SphereGeometry(1.0, 512.0, 512.0);
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 scene.add(sphere);
 
